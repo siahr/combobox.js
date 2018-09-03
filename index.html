@@ -17,9 +17,10 @@
     </style>
     <script type="text/javascript">
         $(function(){
-            $(".combobox").combobox({
-                'initial-text' : '区切り文字',
-                'placeholder' : '区切り文字'
+            $("#combobox1").combobox();
+            $("#combobox2").combobox({
+                'text_initial_string' : 'Another one ... ',
+                'text_placeholder' : 'Any string'
             });
         });
 
@@ -29,36 +30,28 @@
     </script>
 </head>
 <body>
-<div class="contents">
-    <select name="combobox" id="combobox1" class="combobox">
-        <option value="A">Alpha</option>
-        <option value="B">Bravo</option>
-        <option value="C">Charlie</option>
-        <option class="text" value="">区切り文字</option>
-    </select>
-    <input type="button" value="値の取得" onclick="func($('#combobox1'))">
-</div>
 
 <div class="contents">
-    <select name="combobox" id="combobox2" class="combobox" data-text="%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82">
-        <option value="A">Alpha</option>
-        <option value="B">Bravo</option>
-        <option value="C">Charlie</option>
-        <option class="text" value="">another one ...</option>
-    </select>
-    <input type="button" value="値の取得" onclick="func($('#combobox2'))">
-</div>
-
-<div class="contents">
-    <select name="combobox" id="combobox3" class="combobox" data-text="%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82">
-        <option class="text" value=""></option>
+    <select name="combobox1" id="combobox1" class="combobox" data-text="">
+        <option class="cmb-text" value=""></option>
         <option value="A">Alpha</option>
         <option value="B">Bravo</option>
         <option value="C">Charlie</option>
     </select>
 
-    <input type="button" value="値の取得" onclick="func($('#combobox3'))">
+    <input type="button" value="Get value" onclick="func($('#combobox1'))">
 </div>
+
+<div class="contents">
+    <select name="combobox2" id="combobox2" class="combobox" data-text="Some string">
+        <option value="D">Delta</option>
+        <option value="E">Echo</option>
+        <option value="F">Foxtrot</option>
+        <option class="cmb-text" value="another">Another one ... </option>
+    </select>
+    <input type="button" value="Get value" onclick="func($('#combobox2'))">
+</div>
+
 
 </body>
 </html>
