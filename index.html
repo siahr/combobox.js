@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ComboBox</title>
+    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/combobox.js"></script>
+    <style type="text/css">
+        div.contents {
+            margin:120px;
+        }
+        select.combobox {
+            width:180px;
+            font-family:"ＭＳ Ｐゴシック", arial, helvetica, clean, sans-serif;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function(){
+            $(".combobox").combobox({
+                'initial-text' : '区切り文字',
+                'placeholder' : '区切り文字'
+            });
+        });
+
+        const func = function(element) {
+            alert(element.combobox('val'));
+        };
+    </script>
+</head>
+<body>
+<div class="contents">
+    <select name="combobox" id="combobox1" class="combobox">
+        <option value="A">Alpha</option>
+        <option value="B">Bravo</option>
+        <option value="C">Charlie</option>
+        <option class="text" value="">区切り文字</option>
+    </select>
+    <input type="button" value="値の取得" onclick="func($('#combobox1'))">
+</div>
+
+<div class="contents">
+    <select name="combobox" id="combobox2" class="combobox" data-text="%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82">
+        <option value="A">Alpha</option>
+        <option value="B">Bravo</option>
+        <option value="C">Charlie</option>
+        <option class="text" value="">another one ...</option>
+    </select>
+    <input type="button" value="値の取得" onclick="func($('#combobox2'))">
+</div>
+
+<div class="contents">
+    <select name="combobox" id="combobox3" class="combobox" data-text="%E3%81%82%E3%81%82%E3%81%82%E3%81%82%E3%81%82">
+        <option class="text" value=""></option>
+        <option value="A">Alpha</option>
+        <option value="B">Bravo</option>
+        <option value="C">Charlie</option>
+    </select>
+
+    <input type="button" value="値の取得" onclick="func($('#combobox3'))">
+</div>
+
+</body>
+</html>
