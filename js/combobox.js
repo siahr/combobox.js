@@ -46,7 +46,14 @@
 
         const textVal = function(element) {
             if (element.attr(settings['text_holder']) === undefined) return "";
+            if (element.attr(settings['text_holder']) === "" && settings['text_initial_string'])  return settings['text_initial_string'];
             return decode(element.attr(settings['text_holder']))
+        };
+
+        const textClear = function(text) {
+            if (settings['text_initial_string']) {
+                if (text.val() === settings['text_initial_string']) text.val("");
+            }
         };
 
         const id = function(element) {
@@ -82,11 +89,13 @@
                                 .find('option:selected').text(text.val() || settings['text_initial_string'])
                             ;
                             if (settings['text_input_callback']) settings['text_input_callback']();
+                            textClear(text);
                         }})
-                        .on('focus', function(){
+                        .on('focus', function() {
                             if (settings['text_on_focus']) settings['text_on_focus']();
                         })
-                        .on('change', function(){
+                        .on('change', function() {
+                            textClear(text);
                             if (settings['text_on_change']) settings['text_on_change']();
                         })
                 ;
@@ -95,6 +104,7 @@
                 const opt = $(this).find('option:selected');
                 if (opt.hasClass(settings['text_option_class'])) {
                     opt.text(textVal($(this)));
+                    textClear(text);
                     cmb.show();
                 }
             });
