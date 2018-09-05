@@ -20,7 +20,8 @@
             'text_holder' : "data-text",
             'encoder' : encodeURIComponent,
             'decoder' : decodeURIComponent,
-            'encode' :false
+            'encode' :false,
+            'prefix' : 'cmb-'
         }, options);
 
         this.methods = {
@@ -57,7 +58,8 @@
         };
 
         const id = function(element) {
-            return 'cmb-' + element.attr('id');
+            if (element.attr('id') !== undefined) return settings['prefix'] + element.attr('id');
+            return settings['prefix'] + element.index('select');
         };
 
         if (this.methods[options]) {
