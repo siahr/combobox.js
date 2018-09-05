@@ -23,10 +23,6 @@
                 'text_placeholder' : 'Any string'
             });
         });
-
-        const func = function(element) {
-            alert(element.combobox('val'));
-        };
     </script>
 </head>
 <body>
@@ -38,8 +34,6 @@
         <option value="B">Bravo</option>
         <option value="C">Charlie</option>
     </select>
-
-    <input type="button" value="Get value" onclick="func($('#combobox1'))">
 </div>
 
 <div class="contents">
@@ -49,7 +43,6 @@
         <option value="F">Foxtrot</option>
         <option class="cmb-text" value="another">Another one ... </option>
     </select>
-    <input type="button" value="Get value" onclick="func($('#combobox2'))">
 </div>
 
 

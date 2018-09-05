@@ -9,7 +9,6 @@
 
 ;(function($){
     $.fn.combobox = function(options) {
-        const self = this;
         const settings = $.extend( {
             'text_option_class' : 'cmb-text',
             'text_input_callback' : null,
@@ -25,12 +24,6 @@
         }, options);
 
         this.methods = {
-            val : function() {
-                if (!self.find('option:selected').hasClass(settings['text_option_class'])) return self.val();
-                const text = self.attr(settings['text_holder']);
-                if (!text) return '';
-                return decode(text);
-            }
         };
 
         const encode = function(val) {
