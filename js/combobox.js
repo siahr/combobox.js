@@ -39,8 +39,7 @@
         };
 
         const textVal = function(element) {
-            if (element.attr(settings['text_holder']) === undefined) return "";
-            if (element.attr(settings['text_holder']) === "" && settings['text_initial_string'])  return settings['text_initial_string'];
+            if (!element.attr(settings['text_holder']))  return settings['text_initial_string'];
             return decode(element.attr(settings['text_holder']))
         };
 
@@ -59,11 +58,10 @@
             return this.methods[options].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof options === 'object' || !options) {
             return this.each(function() {
-                $(this).on('change', function(e) {
+                $(this).on('change', function() {
                     const cmb = $('#' + id($(this))).hide();
                     if (!$(this).find('option:selected').hasClass(settings['text_option_class'])) return;
-                    cmb.show().find('input').focus();
-                    e.preventDefault();
+                    textClear(cmb.show().find('input').focus());
                 });
 
                 const top = $(this).position().top+1, left = $(this).position().left+1, width = $(this).innerWidth()-18, height = $(this).innerHeight();
